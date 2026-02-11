@@ -1,0 +1,63 @@
+<header class="site-header" role="banner">
+  <div class="page-width site-header__inner">
+    <a class="site-header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+      <span class="logo-mark">
+        <span class="logo-mark__sari">{{ section.settings.logo_sari_text }}</span><span class="logo-mark__oz">{{ section.settings.logo_oz_text }}</span>
+      </span>
+      <span class="logo-accent" aria-hidden="true"></span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul class="site-nav__list" role="list">
+        {% for link in section.settings.menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <form class="header-search" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="header-search-input">Search products</label>
+        <input id="header-search-input" type="search" name="q" placeholder="Search" aria-label="Search products">
+      </form>
+      <a href="{{ routes.account_url }}" aria-label="Account">Account</a>
+      <a href="{{ routes.cart_url }}" aria-label="Cart">Cart ({{ cart.item_count }})</a>
+      {% form 'localization', class: 'localization-form' %}
+        <label class="visually-hidden" for="currency-selector">Currency selector</label>
+        <select id="currency-selector" name="country_code" onchange="this.form.submit()" aria-label="Select market and currency">
+          {% for country in localization.available_countries %}
+            <option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>
+              {{ country.name }} ({{ country.currency.iso_code }})
+            </option>
+          {% endfor %}
+        </select>
+      {% endform %}
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "logo_sari_text",
+      "label": "SARI text",
+      "default": "SARI"
+    },
+    {
+      "type": "text",
+      "id": "logo_oz_text",
+      "label": "OZ text",
+      "default": "OZ"
+    }
+  ]
+}
+{% endschema %}

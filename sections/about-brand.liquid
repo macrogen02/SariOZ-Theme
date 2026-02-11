@@ -1,0 +1,31 @@
+<section class="about-brand section-padding" aria-labelledby="about-brand-heading">
+  <div class="page-width about-brand__content">
+    <h2 id="about-brand-heading">{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.text }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About brand",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Where Sari Meets Oz"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Born from the connection between the Philippines and Australia, SARIOZ brings everyday essentials, trusted brands, and modern finds closer to home."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About brand"
+    }
+  ]
+}
+{% endschema %}

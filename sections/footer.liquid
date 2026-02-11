@@ -1,0 +1,45 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="page-width site-footer__inner">
+    <div>
+      <h2 class="site-footer__brand"><span class="logo-mark__sari">SARI</span><span class="logo-mark__oz">OZ</span></h2>
+      <p>{{ section.settings.tagline }}</p>
+    </div>
+    <nav aria-label="Footer quick links">
+      <h3>Quick links</h3>
+      <ul role="list">
+        {% for link in section.settings.footer_menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <div>
+      <h3>Follow</h3>
+      <ul class="social-links" role="list">
+        <li><a href="#" aria-label="Facebook">Facebook</a></li>
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="TikTok">TikTok</a></li>
+      </ul>
+      <p class="payment-icons" aria-label="Supported payments">Visa · Mastercard · PayPal · Afterpay</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Modern Filipino-Australian shopping, made simple."
+    }
+  ]
+}
+{% endschema %}

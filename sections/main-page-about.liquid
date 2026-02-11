@@ -1,0 +1,28 @@
+<section class="section-padding about-page" aria-labelledby="about-page-heading">
+  <div class="page-width about-page__inner">
+    <h1 id="about-page-heading">{{ section.settings.heading }}</h1>
+    <div class="about-page__mission">
+      {{ section.settings.body | newline_to_br }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main about page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "At SARIOZ, we believe home is not just a place — it’s a feeling.\n\nBorn from the connection between the Philippines and Australia, SARIOZ was created to bring everyday essentials, trusted brands, and modern products closer to Filipinos living Down Under — and beyond.\n\nWe are inspired by the traditional Filipino sari-sari store — reimagined for the modern world.\n\nNo matter where you are, SARIOZ connects you to home."
+    }
+  ]
+}
+{% endschema %}

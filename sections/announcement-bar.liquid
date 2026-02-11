@@ -1,0 +1,27 @@
+{% if section.settings.show_announcement %}
+  <div class="announcement-bar" role="region" aria-label="Store announcement">
+    <div class="page-width announcement-bar__inner">
+      <p class="announcement-bar__text">{{ section.settings.text | escape }}</p>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "Fast shipping across Australia 🇦🇺 | Filipino favorites delivered with care 🇵🇭"
+    }
+  ]
+}
+{% endschema %}

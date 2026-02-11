@@ -1,0 +1,54 @@
+<section class="section-padding" aria-labelledby="product-title-{{ section.id }}">
+  <div class="page-width product-layout">
+    <div class="product-gallery" role="region" aria-label="Product gallery">
+      {% for media in product.media %}
+        <figure class="product-gallery__item">
+          {{ media | image_url: width: 1200 | image_tag: loading: 'lazy', alt: media.alt | default: product.title }}
+        </figure>
+      {% endfor %}
+    </div>
+
+    <div class="product-info">
+      <h1 id="product-title-{{ section.id }}">{{ product.title }}</h1>
+      <p class="product-price">{{ product.selected_or_first_available_variant.price | money }}</p>
+      <div class="product-description rte">{{ product.description }}</div>
+
+      {% form 'product', product, class: 'product-form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="button button--primary button--full" data-sticky-atc-target>Add to cart</button>
+      {% endform %}
+
+      <ul class="trust-badges" role="list" aria-label="Trust badges">
+        <li>Secure checkout</li>
+        <li>AU-wide delivery</li>
+        <li>Authentic products</li>
+      </ul>
+
+      <div class="accordion-group" data-accordion-group>
+        <details open>
+          <summary>Shipping information</summary>
+          <p>Orders are packed within 1-2 business days and shipped Australia-wide. Live shipping rates shown at checkout.</p>
+        </details>
+        <details>
+          <summary>Returns</summary>
+          <p>Easy returns within 14 days for unopened items.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <div class="sticky-atc" data-sticky-atc>
+    <p>{{ product.title }} · {{ product.selected_or_first_available_variant.price | money }}</p>
+    {% form 'product', product %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" class="button button--primary">Add to cart</button>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,19 @@
+<article class="product-card" aria-label="{{ product.title }}">
+  <a href="{{ product.url }}" class="product-card__media-link">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', class: 'product-card__image', alt: product.featured_image.alt | default: product.title }}
+    {% endif %}
+  </a>
+  <div class="product-card__content">
+    <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <p class="product-card__price">{{ product.price | money }}</p>
+    {% if product.available %}
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="button button--primary">Quick add</button>
+      </form>
+    {% else %}
+      <p class="product-card__sold-out" aria-live="polite">Sold out</p>
+    {% endif %}
+  </div>
+</article>

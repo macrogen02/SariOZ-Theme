@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Theme settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_dark_mode",
+        "label": "Enable dark mode",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  }
+]

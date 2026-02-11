@@ -1,0 +1,53 @@
+<section class="section-padding" aria-labelledby="featured-collections-heading">
+  <div class="page-width">
+    <h2 id="featured-collections-heading">Featured Collections</h2>
+    <div class="collection-grid">
+      {% for block in section.blocks %}
+        {% assign collection = block.settings.collection %}
+        <a class="collection-card" href="{{ collection.url | default: '#' }}" {{ block.shopify_attributes }}>
+          {% if collection.featured_image %}
+            {{ collection.featured_image | image_url: width: 720 | image_tag: loading: 'lazy', class: 'collection-card__image', alt: collection.title }}
+          {% endif %}
+          <h3>{{ collection.title | default: block.settings.fallback_title }}</h3>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collections",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "fallback_title",
+          "label": "Fallback title",
+          "default": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collections",
+      "blocks": [
+        {"type": "collection", "settings": {"fallback_title": "Pantry Essentials"}},
+        {"type": "collection", "settings": {"fallback_title": "Household"}},
+        {"type": "collection", "settings": {"fallback_title": "Tech & Lifestyle"}},
+        {"type": "collection", "settings": {"fallback_title": "New Arrivals"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

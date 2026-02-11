@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page-about",
+      "settings": {
+        "heading": "Where Sari Meets Oz",
+        "body": "At SARIOZ, we believe home is not just a place — it’s a feeling.\n\nBorn from the connection between the Philippines and Australia, SARIOZ was created to bring everyday essentials, trusted brands, and modern products closer to Filipinos living Down Under — and beyond.\n\nWe are inspired by the traditional Filipino sari-sari store — reimagined for the modern world.\n\nNo matter where you are, SARIOZ connects you to home."
+      }
+    }
+  },
+  "order": ["main"]
+}
